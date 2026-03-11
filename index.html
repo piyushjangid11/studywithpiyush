@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RTU Notes Portal</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:#f5f6fa;
+}
+
+header{
+background:#2c3e50;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:20px;
+}
+
+.search-box{
+text-align:center;
+margin-bottom:30px;
+}
+
+.search-box input{
+width:70%;
+padding:12px;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:16px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+text-align:center;
+cursor:pointer;
+transition:.3s;
+border-bottom:4px solid #3498db;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+}
+
+.modal-content{
+background:white;
+width:90%;
+max-width:500px;
+margin:8% auto;
+padding:20px;
+border-radius:10px;
+}
+
+.close{
+float:right;
+font-size:25px;
+cursor:pointer;
+}
+
+.subject{
+display:flex;
+justify-content:space-between;
+padding:12px;
+background:#f1f2f6;
+margin:8px 0;
+border-radius:6px;
+text-decoration:none;
+color:black;
+}
+
+.subject:hover{
+background:#dfe6e9;
+}
+
+footer{
+text-align:center;
+padding:20px;
+color:#777;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>RTU Notes Portal</h1>
+<p>Download Semester Notes & Previous Papers</p>
+</header>
+
+<div class="container">
+
+<div class="search-box">
+<input type="text" id="search" placeholder="Search subject...">
+</div>
+
+<div class="grid" id="semGrid"></div>
+
+</div>
+
+<div class="modal" id="modal">
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">×</span>
+
+<h2 id="title"></h2>
+
+<div id="subjects"></div>
+
+</div>
+</div>
+
+<footer>
+© 2026 RTU Student Hub
+</footer>
+
+<script>
+
+const notesData={
+1:[
+{name:"Engineering Mathematics 1",link:"pdfs/math1.pdf"},
+{name:"Engineering Physics",link:"pdfs/physics.pdf"},
+{name:"Communication Skills",link:"pdfs/english.pdf"}
+],
+
+2:[
+{name:"Engineering Mathematics 2",link:"pdfs/math2.pdf"},
+{name:"Basic Electrical Engineering",link:"pdfs/bee.pdf"},
+{name:"Engineering Chemistry",link:"pdfs/chem.pdf"}
+]
+}
+
+const grid=document.getElementById("semGrid")
+
+for(let i=1;i<=8;i++){
+grid.innerHTML+=`
+<div class="card" onclick="openSem(${i})">
+<h3>Semester ${i}</h3>
+<p>B.Tech All Branch</p>
+</div>
+`
+}
+
+function openSem(n){
+
+const modal=document.getElementById("modal")
+const title=document.getElementById("title")
+const subjects=document.getElementById("subjects")
+
+title.innerText="Semester "+n
+
+subjects.innerHTML=""
+
+const data=notesData[n]
+
+if(data){
+
+data.forEach(s=>{
+subjects.innerHTML+=`
+<a class="subject" href="${s.link}" target="_blank">
+<span>${s.name}</span>
+<span>PDF</span>
+</a>
+`
+})
+
+}else{
+
+subjects.innerHTML="<p>Notes coming soon...</p>"
+
+}
+
+modal.style.display="block"
+
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none"
+}
+
+window.onclick=function(e){
+if(e.target==document.getElementById("modal")){
+closeModal()
+}
+}
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase()
+
+document.querySelectorAll(".subject").forEach(function(el){
+
+if(el.innerText.toLowerCase().includes(value)){
+el.style.display="flex"
+}else{
+el.style.display="none"
+}
+
+})
+
+})
+
+</script>
+
+</body>
+</html>

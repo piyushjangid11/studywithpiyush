@@ -2,237 +2,141 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>RTU Notes Portal</title>
+<title>Piyush Jangid</title>
 
 <style>
 
 body{
-font-family:Arial;
+font-family: Arial;
 margin:0;
-background:#f5f6fa;
+text-align:center;
+
+/* BOOK BACKGROUND */
+background-image:url("https://images.unsplash.com/photo-1512820790803-83ca734da794");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
 }
+
+/* HEADER */
 
 header{
-background:#2c3e50;
+background:rgba(0,0,0,0.8);
 color:white;
-text-align:center;
-padding:25px;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
 padding:20px;
 }
 
-.search-box{
-text-align:center;
-margin-bottom:30px;
+header h1{
+margin:0;
 }
 
-.search-box input{
-width:70%;
-padding:12px;
-border-radius:8px;
-border:1px solid #ccc;
-font-size:16px;
+/* NOTES CONTAINER */
+
+.container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:40px;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-}
+/* CARD DESIGN */
 
 .card{
 background:white;
-padding:25px;
-border-radius:10px;
-text-align:center;
-cursor:pointer;
-transition:.3s;
-border-bottom:4px solid #3498db;
-}
-
-.card:hover{
-transform:translateY(-5px);
-box-shadow:0 5px 15px rgba(0,0,0,0.1);
-}
-
-.modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-}
-
-.modal-content{
-background:white;
-width:90%;
-max-width:500px;
-margin:8% auto;
+width:250px;
+margin:15px;
 padding:20px;
-border-radius:10px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
-.close{
-float:right;
-font-size:25px;
-cursor:pointer;
-}
+/* BUTTON */
 
-.subject{
-display:flex;
-justify-content:space-between;
-padding:12px;
-background:#f1f2f6;
-margin:8px 0;
+button{
+background:#007bff;
+border:none;
+padding:10px 15px;
+color:white;
 border-radius:6px;
-text-decoration:none;
-color:black;
+cursor:pointer;
+font-size:14px;
 }
 
-.subject:hover{
-background:#dfe6e9;
+button:hover{
+background:#0056b3;
 }
+
+/* FOOTER */
 
 footer{
-text-align:center;
-padding:20px;
-color:#777;
+margin-top:50px;
+background:rgba(0,0,0,0.8);
+color:white;
+padding:12px;
 }
 
 </style>
 </head>
 
+
 <body>
 
 <header>
-<h1>RTU Notes Portal</h1>
-<p>Download Semester Notes & Previous Papers</p>
+<h1>STUDY WITH PIYUSH</h1>
+<p>B.Tech Notes | PYQ | Study Material</p>
 </header>
+
 
 <div class="container">
 
-<div class="search-box">
-<input type="text" id="search" placeholder="Search subject...">
+<div class="card">
+<h2>Mathematics1</h2>
+<p>Unit 1 Notes</p>
+<a href="pdf/math2.pdf" download>
+<button>Download PDF</button>
+</a>
 </div>
 
-<div class="grid" id="semGrid"></div>
+
+<div class="card">
+<h2>Physics</h2>
+<p>Laser Notes</p>
+<a href="pdf/physics.pdf" download>
+<button>Download PDF</button>
+</a>
+</div>
+
+
+<div class="card">
+<h2>DCN</h2>
+<p>Unit 1 Notes</p>
+<a href="pdf/dcn.pdf" download>
+<button>Download PDF</button>
+</a>
+</div>
+
+
+<div class="card">
+<h2>Mechanical</h2>
+<p>Manufacturing Process</p>
+<a href="pdf/mechanical.pdf" download>
+<button>Download PDF</button>
+</a>
+</div>
 
 </div>
 
-<div class="modal" id="modal">
-<div class="modal-content">
-
-<span class="close" onclick="closeModal()">×</span>
-
-<h2 id="title"></h2>
-
-<div id="subjects"></div>
-
-</div>
-</div>
 
 <footer>
-© 2026 RTU Student Hub
+<p>Made by Piyush 🚀</p>
 </footer>
+
 
 <script>
 
-const notesData={
-1:[
-{name:" sanskrit 1",link:"chetan_new_report[1][1].pdf"},
-{name:"Engineering Physics",link:"pdfs/physics.pdf"},
-{name:"Communication Skills",link:"pdfs/english.pdf"}
-],
-
-2:[
-{name:"Engineering Mathematics 2",link:"math1.pdf"},
-{name:"Basic Electrical Engineering",link:"pdfs/bee.pdf"},
-{name:"Engineering Chemistry",link:"pdfs/chem.pdf"}
-]
-}
-
-const grid=document.getElementById("semGrid")
-
-for(let i=1;i<=8;i++){
-grid.innerHTML+=`
-<div class="card" onclick="openSem(${i})">
-<h3>Semester ${i}</h3>
-<p>B.Tech All Branch</p>
-</div>
-`
-}
-
-function openSem(n){
-
-const modal=document.getElementById("modal")
-const title=document.getElementById("title")
-const subjects=document.getElementById("subjects")
-
-title.innerText="Semester "+n
-
-subjects.innerHTML=""
-
-const data=notesData[n]
-
-if(data){
-
-data.forEach(s=>{
-subjects.innerHTML+=`
-<a class="subject" href="${s.link}" target="_blank">
-<span>${s.name}</span>
-<span>PDF</span>
-</a>
-`
-})
-
-}else{
-
-subjects.innerHTML="<p>Notes coming soon...</p>"
-
-}
-
-modal.style.display="block"
-
-}
-
-function closeModal(){
-document.getElementById("modal").style.display="none"
-}
-
-window.onclick=function(e){
-if(e.target==document.getElementById("modal")){
-closeModal()
-}
-}
-
-document.getElementById("search").addEventListener("keyup",function(){
-
-let value=this.value.toLowerCase()
-
-document.querySelectorAll(".subject").forEach(function(el){
-
-if(el.innerText.toLowerCase().includes(value)){
-el.style.display="flex"
-}else{
-el.style.display="none"
-}
-
-})
-
-})
+console.log("RTU Notes Website Loaded");
 
 </script>
 
 </body>
-
 </html>
-
-

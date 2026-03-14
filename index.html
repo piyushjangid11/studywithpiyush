@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Piyush Jangid</title>
+<title>Study With Piyush</title>
 
 <style>
 
@@ -10,15 +10,11 @@ body{
 font-family: Arial;
 margin:0;
 text-align:center;
-
-/* BOOK BACKGROUND */
 background-image:url("https://images.unsplash.com/photo-1512820790803-83ca734da794");
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
 }
-
-/* HEADER */
 
 header{
 background:rgba(0,0,0,0.8);
@@ -26,20 +22,12 @@ color:white;
 padding:20px;
 }
 
-header h1{
-margin:0;
-}
-
-/* NOTES CONTAINER */
-
 .container{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-margin-top:40px;
+margin-top:30px;
 }
-
-/* CARD DESIGN */
 
 .card{
 background:white;
@@ -50,10 +38,8 @@ border-radius:12px;
 box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* BUTTON */
-
 button{
-background:#007bff;
+background:#28a745;
 border:none;
 padding:10px 15px;
 color:white;
@@ -63,10 +49,12 @@ font-size:14px;
 }
 
 button:hover{
-background:#0056b3;
+background:#1e7e34;
 }
 
-/* FOOTER */
+.semester-section{
+display:none;
+}
 
 footer{
 margin-top:50px;
@@ -78,65 +66,162 @@ padding:12px;
 </style>
 </head>
 
-
 <body>
 
 <header>
 <h1>STUDY WITH PIYUSH</h1>
-<p>B.Tech Notes | PYQ | Study Material</p>
+<p>B.Tech CSE Notes | PYQ | Study Material</p>
 </header>
 
+
+<!-- SEMESTER -->
 
 <div class="container">
 
 <div class="card">
-<h2>Mathematics1</h2>
-<p>Unit 1 Notes</p>
-<a href="pdf/math2.pdf" download>
-<button>Download PDF</button>
-</a>
+<h2>Semester 1</h2>
+<button onclick="openSemester('sem1')">Open</button>
 </div>
-
 
 <div class="card">
-<h2>Physics</h2>
-<p>Laser Notes</p>
-<a href="pdf/physics.pdf" download>
-<button>Download PDF</button>
-</a>
+<h2>Semester 2</h2>
+<button onclick="openSemester('sem2')">Open</button>
 </div>
-
 
 <div class="card">
-<h2>DCN</h2>
-<p>Unit 1 Notes</p>
-<a href="pdf/dcn.pdf" download>
-<button>Download PDF</button>
-</a>
+<h2>Semester 3</h2>
+<button onclick="openSemester('sem3')">Open</button>
 </div>
-
 
 <div class="card">
-<h2>Mechanical</h2>
-<p>Manufacturing Process</p>
-<a href="pdf/mechanical.pdf" download>
-<button>Download PDF</button>
+<h2>Semester 4</h2>
+<button onclick="openSemester('sem4')">Open</button>
+</div>
+
+</div>
+
+
+<!-- SEM 1 -->
+
+<div id="sem1" class="semester-section">
+<h2>Semester 1 Subjects</h2>
+
+<div class="container">
+
+<div class="card">
+<h3>Math 1</h3>
+<a href="pdf/math1.pdf" target="_blank">
+<button>View Notes</button>
+</a>
+</div>
+
+<div class="card">
+<h3>Chemistry</h3>
+<a href="pdf/chemistry.pdf" target="_blank">
+<button>View Notes</button>
+</a>
+</div>
+
+<div class="card">
+<h3>PPS</h3>
+<a href="pdf/pps.pdf" target="_blank">
+<button>View Notes</button>
+</a>
+</div>
+
+<div class="card">
+<h3>Electrical</h3>
+<a href="pdf/electrical.pdf" target="_blank">
+<button>View Notes</button>
+</a>
+</div>
+
+<div class="card">
+<h3>Communication Skill</h3>
+<a href="pdf/communication.pdf" target="_blank">
+<button>View Notes</button>
 </a>
 </div>
 
 </div>
+</div>
 
 
-<footer>
-<p>Made by Piyush 🚀</p>
-</footer>
+<!-- SEM 2 -->
+
+<div id="sem2" class="semester-section">
+<h2>Semester 2 Subjects</h2>
+
+<div class="container">
+
+<div class="card"><h3>Math 2</h3><a href="pdf/math2.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>Civil</h3><a href="pdf/civil.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>Physics</h3><a href="pdf/physics.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>Mechanical</h3><a href="pdf/mechanical.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>Human Values</h3><a href="pdf/humanvalue.pdf" target="_blank"><button>View Notes</button></a></div>
+
+</div>
+</div>
+
+
+<!-- SEM 3 -->
+
+<div id="sem3" class="semester-section">
+<h2>Semester 3 Subjects</h2>
+
+<div class="container">
+
+<div class="card"><h3>Software Engineering</h3><a href="pdf/se.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>OOPS</h3><a href="pdf/oops.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>DSA</h3><a href="pdf/dsa.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>Advance Math</h3><a href="pdf/advancemath.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>TC</h3><a href="pdf/tc.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>Digital Electronics</h3><a href="pdf/digital.pdf" target="_blank"><button>View Notes</button></a></div>
+
+</div>
+</div>
+
+
+<!-- SEM 4 -->
+
+<div id="sem4" class="semester-section">
+<h2>Semester 4 Subjects</h2>
+
+<div class="container">
+
+<div class="card"><h3>Operating System</h3><a href="pdf/os.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>DBMS</h3><a href="pdf/dbms.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>Computer Network</h3><a href="pdf/cn.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>Discrete Math</h3><a href="pdf/dm.pdf" target="_blank"><button>View Notes</button></a></div>
+<div class="card"><h3>Microprocessor</h3><a href="pdf/mp.pdf" target="_blank"><button>View Notes</button></a></div>
+
+</div>
+</div>
 
 
 <script>
 
-console.log("RTU Notes Website Loaded");
+function openSemester(id){
+
+document.querySelectorAll(".semester-section").forEach(function(sec){
+sec.style.display="none";
+});
+
+document.getElementById(id).style.display="block";
+
+window.scrollTo({
+top:document.getElementById(id).offsetTop,
+behavior:"smooth"
+});
+
+}
 
 </script>
+
+
+<footer>
+<p>Made by PIYUSH JANGID🚀</p>
+</footer>
 
 </body>
 </html>
